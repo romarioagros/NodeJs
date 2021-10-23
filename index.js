@@ -1,10 +1,17 @@
-var x = 0;
-if (x==0)
-    console.log("work");
+function test (){
+    console.log("привет!");
+}
 
-for (var i = 0 ; i<5 ; i++) 
-console.log(i);   
 
-setTimeout(function(){
-    console.log('Привет!');
-},2000);
+test();
+var printSomething = function(){
+ console.log("просто функция");
+};
+// именноованная функция
+printSomething();
+
+function call(func){
+    func();
+}
+
+call(test);
