@@ -1,9 +1,22 @@
-var events = require('events');
+var events = require("events");
+var util = require("util");
 
-var myEmit = new events.EventEmitter();
+var Cars = function (model) {
+  this.model = model;
+};
 
-myEmit.on('some_event', function(text){
-    console.log(text);
-})
+util.inherits(Cars,events.EventEmitter)
 
-myEmit.emit("some_event","обработчик событий сработал.")
+var bmw = new Cars("BMW");
+var audi = new Cars("Audi");
+var volvo = new Cars("Volvo");
+
+var cars = [bmw , audi,volvo];
+cars.forEach(function(car){
+    car.on("speed", function(text){
+        console.log(car.model + " speeed is " + text);
+    });
+});
+
+bmw.emit("speed", "254.5 km");
+volvo.emit("speed", "180 km");
