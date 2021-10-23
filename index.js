@@ -1,17 +1,4 @@
-function test (){
-    console.log("привет!");
-}
+var counter = require('./array');
 
 
-test();
-var printSomething = function(){
- console.log("просто функция");
-};
-// именноованная функция
-printSomething();
-
-function call(func){
-    func();
-}
-
-call(test);
+console.log(counter([1,7,99,8,45,88,99]));
