@@ -1,5 +1,9 @@
-var things = require('./things');
-console.log(things.some_value);
+var events = require('events');
 
-console.log(things.array_counter([1,7,99,8,45,88,99]));
-console.log(things.multiply(5,8));
+var myEmit = new events.EventEmitter();
+
+myEmit.on('some_event', function(text){
+    console.log(text);
+})
+
+myEmit.emit("some_event","обработчик событий сработал.")
