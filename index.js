@@ -1,16 +1,9 @@
-var fs = require('fs');
-fs.unlink('./new-one/some.txt', function(){})
-//создание папки
-//fs.mkdirSync('new-one');
-//удаление папки
-//fs.rmdirSync('new-one');
+var http = require('http');
 
-fs.rmdir('new-one', function(){});
+var server = http.createServer(function(req,res){
+    res.writeHead(200,{'Content-Type':"text/plain; charset=utf-8"});
+    res.end("привет мир!");
+});
 
-
-//создание папки асинхронно
-/* fs.mkdir('new-one',function(){;
-    fs.writeFile('./new-one/some.txt', 'привет привет привет', function(){;
-        console.log("все сработало");
-    });
-}); */
+server.listen(3000,'127.0.0.1');
+console.log('мы отслеживаем порт 3000');
