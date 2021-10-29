@@ -11,19 +11,19 @@ myReadShort.pipe(myWriteShort);
 
 var server = http.createServer(function(req,res){
     console.log("Url страницы"+ req.url);
-    res.writeHead(200,{'Content-Type':"application/json; charset=utf-8"});
-    var obj = {
-        model:"Audi",
-        speed :  '234.5',
-        wheels : 4
+    if (req.url === '/index'||req.url==='/'){
+        res.writeHead(200,{'Content-Type':"text/html; charset=utf-8"});
+        fs.createReadStream(__dirname+ '/index.html').pipe(res);
+    } else if (req.url === "/about"){
+        res.writeHead(200,{'Content-Type':"text/html; charset=utf-8"});
+        fs.createReadStream(__dirname+ '/about.html').pipe(res);
+    }else {
+        res.writeHead(404,{'Content-Type':"text/html; charset=utf-8"});
+        fs.createReadStream(__dirname+ '/404.html').pipe(res);
     }
-    //var myReadShort = fs.createReadStream(__dirname + '/index.html' , 'utf8');
-    //var myWriteShort = fs.createWriteStream(__dirname + '/news.txt');
-
-
-   res.end(JSON.stringify(obj));
+  
   
 });
 
 server.listen(80,'localhost');
-console.log('мы отслеживаем порт 3000');
+console.log('мы отслеживаем порт 80');
