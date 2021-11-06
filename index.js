@@ -5,13 +5,14 @@ var app = express();
 app.set('view engine', 'ejs');
 
 
+app.use('/public', express.static('public'));
 
 app.get("/", function (req, res) {
-    res.sendFile(__dirname+ "/index.html");
+    res.render('index');
 });
 
 app.get("/about", function (req, res) {
-    res.sendFile(__dirname +  "/about.html");
+    res.render("about"  );
 });
 
 app.get("/news/:id", function (req, res) {
